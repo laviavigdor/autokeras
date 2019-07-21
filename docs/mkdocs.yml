@@ -16,16 +16,10 @@ nav:
     - Home: index.md
     - Getting Started: start.md
     - Docker: docker.md
-    - Contributing Guide: contribute.md
+    - Contributing Guide: contributing.md
     - Neural Architecture Search: nas.md
     - Documentation:
-      - supervised: temp/supervised.md
-      - image_supervised: temp/image_supervised.md
-      - bayesian: temp/bayesian.md
-      - search: temp/search.md
-      - graph: temp/graph.md
-      - preprocessor: temp/preprocessor.md
-      - model_trainer: temp/model_trainer.md
-      - utils: temp/utils.md
-      - generator: temp/generator.md
+      - auto_model: auto_model.md
+      - hypermodel:
+        - block: hypermodel/block.md
     - About: about.md

@@ -9,6 +9,7 @@ import shutil
 import sys
 
 import six
+import autokeras
 from autokeras import auto_model
 from autokeras.hypermodel import block
 
@@ -108,12 +109,16 @@ EXCLUDE = {
 PAGES = [
     {
         'page': 'auto_model.md',
-        'methods': [
-            auto_model.AutoModel.fit,
-            auto_model.AutoModel.predict,
-            auto_model.GraphAutoModel.fit,
-            auto_model.GraphAutoModel.predict,
-        ],
+        'classes': [
+            (auto_model.AutoModel, [
+                auto_model.AutoModel.fit,
+                auto_model.AutoModel.predict,
+            ]),
+            (auto_model.GraphAutoModel, [
+                auto_model.GraphAutoModel.fit,
+                auto_model.GraphAutoModel.predict,
+            ]),
+        ]
     },
     {
         'page': 'hypermodel/block.md',
@@ -525,11 +530,6 @@ def generate(sources_dir):
     """
     template_dir = os.path.join(str(keras_dir), 'docs', 'templates')
 
-    if K.backend() != 'tensorflow':
-        raise RuntimeError('The documentation must be built '
-                           'with the TensorFlow backend because this '
-                           'is the only backend with docstrings.')
-
     print('Cleaning up existing sources directory.')
     if os.path.exists(sources_dir):
         shutil.rmtree(sources_dir)
@@ -543,7 +543,6 @@ def generate(sources_dir):
     with open(os.path.join(sources_dir, 'index.md'), 'w') as f:
         f.write(index)
 
-    print('Generating docs for Keras %s.' % keras.__version__)
     for page_data in PAGES:
         classes = read_page_data(page_data, 'classes')
 
