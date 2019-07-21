@@ -1,19 +1,22 @@
-site_name: Auto-Keras
+site_name: AutoKeras
 theme:
   name: 'material'
   palette:
     primary: 'teal'
     accent: 'teal'
+
+docs_dir: sources
 repo_url: https://github.com/keras-team/autokeras
 site_url: http://autokeras.com
 edit_uri: ""
+site_description: 'Documentation for AutoKeras.'
 google_analytics: ['UA-44322747-3', 'autokeras.com']
 
 nav:
     - Home: index.md
     - Getting Started: start.md
     - Docker: docker.md
-    - Contributing Guide: temp/contribute.md
+    - Contributing Guide: contribute.md
     - Neural Architecture Search: nas.md
     - Documentation:
       - supervised: temp/supervised.md
